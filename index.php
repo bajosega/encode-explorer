@@ -1,26 +1,25 @@
 <?php
 /***************************************************************************
- *
  * Encode Explorer
- *
  * Author : Marek Rei (marek ät marekrei dot com)
  * Version : 6.4.1
  * Homepage : encode-explorer.siineiolekala.net
- *
- *
  * NB!:If you change anything, save with UTF-8! Otherwise you may
  *     encounter problems, especially when displaying images.
  *
  ***************************************************************************/
-
 /***************************************************************************/
 /*   HERE ARE THE SETTINGS FOR CONFIGURATION                               */
 /***************************************************************************/
-
-//
 // Initialising variables. Don't change these.
-//
-
+//header('Content-Type: text/html; Charset=ISO-8859-1'); 
+ 
+ # Actualizaciones - bajosega@gmail.com
+ //2017-07-10 
+ //Corrijo problemas de acentos en servidor Windows .
+ //Traduccion a Español de la vista proncipal del explorador. 
+ 
+ 
 $_CONFIG = array();
 $_ERROR = "";
 $_START_TIME = microtime(TRUE);
@@ -33,7 +32,7 @@ $_START_TIME = microtime(TRUE);
 // Choose a language. See below in the language section for options.
 // Default: $_CONFIG['lang'] = "en";
 //
-$_CONFIG['lang'] = "en";
+$_CONFIG['lang'] = "es";
 
 //
 // Display thumbnails when hovering over image entries in the list.
@@ -42,7 +41,6 @@ $_CONFIG['lang'] = "en";
 // Default: $_CONFIG['thumbnails'] = true;
 //
 $_CONFIG['thumbnails'] = true;
-
 //
 // Maximum sizes of the thumbnails.
 // Default: $_CONFIG['thumbnails_width'] = 200;
@@ -50,13 +48,11 @@ $_CONFIG['thumbnails'] = true;
 //
 $_CONFIG['thumbnails_width'] = 300;
 $_CONFIG['thumbnails_height'] = 300;
-
 //
 // Mobile interface enabled. true/false
 // Default: $_CONFIG['mobile_enabled'] = true;
 //
 $_CONFIG['mobile_enabled'] = true;
-
 //
 // Mobile interface as the default setting. true/false
 // Default: $_CONFIG['mobile_default'] = false;
@@ -66,67 +62,56 @@ $_CONFIG['mobile_default'] = false;
 /*
  * USER INTERFACE
  */
-
 //
 // Will the files be opened in a new window? true/false
 // Default: $_CONFIG['open_in_new_window'] = false;
 //
-$_CONFIG['open_in_new_window'] = false;
-
+$_CONFIG['open_in_new_window'] = true;
 //
 // How deep in subfolders will the script search for files?
 // Set it larger than 0 to display the total used space.
 // Default: $_CONFIG['calculate_space_level'] = 0;
 //
 $_CONFIG['calculate_space_level'] = 0;
-
 //
 // Will the page header be displayed? 0=no, 1=yes.
 // Default: $_CONFIG['show_top'] = true;
 //
 $_CONFIG['show_top'] = true;
-
 //
 // The title for the page
 // Default: $_CONFIG['main_title'] = "Encode Explorer";
 //
-$_CONFIG['main_title'] = "Encode Explorer";
-
+$_CONFIG['main_title'] = "EXPLORADOR DE DIRECTORIO";
 //
 // The secondary page titles, randomly selected and displayed under the main header.
 // For example: $_CONFIG['secondary_titles'] = array("Secondary title", "&ldquo;Secondary title with quotes&rdquo;");
 // Default: $_CONFIG['secondary_titles'] = array();
 //
 $_CONFIG['secondary_titles'] = array();
-
 //
 // Display breadcrumbs (relative path of the location).
 // Default: $_CONFIG['show_path'] = true;
 //
 $_CONFIG['show_path'] = true;
-
 //
 // Display the time it took to load the page.
 // Default: $_CONFIG['show_load_time'] = true;
 //
 $_CONFIG['show_load_time'] = true;
-
 //
 // The time format for the "last changed" column.
 // Default: $_CONFIG['time_format'] = "d.m.y H:i:s";
 //
 $_CONFIG['time_format'] = "d.m.y H:i:s";
-
 //
 // Charset. Use the one that suits for you.
 // Default: $_CONFIG['charset'] = "UTF-8";
 //
 $_CONFIG['charset'] = "UTF-8";
-
 /*
 * PERMISSIONS
 */
-
 //
 // The array of folder names that will be hidden from the list.
 // Default: $_CONFIG['hidden_dirs'] = array();
@@ -137,7 +122,7 @@ $_CONFIG['hidden_dirs'] = array();
 // Filenames that will be hidden from the list.
 // Default: $_CONFIG['hidden_files'] = array(".ftpquota", "index.php", "index.php~", ".htaccess", ".htpasswd");
 //
-$_CONFIG['hidden_files'] = array(".ftpquota", "index.php", "index.php~", ".htaccess", ".htpasswd");
+$_CONFIG['hidden_files'] = array(".ftpquota", ".htaccess", ".htpasswd","index.php");
 
 //
 // Whether authentication is required to see the contents of the page.
@@ -169,8 +154,8 @@ $_CONFIG['users'] = array();
 // $_CONFIG['newdir_enable'] = true;
 // $_CONFIG['delete_enable'] = false;
 //
-$_CONFIG['upload_enable'] = true;
-$_CONFIG['newdir_enable'] = true;
+$_CONFIG['upload_enable'] = false;
+$_CONFIG['newdir_enable'] = false;
 $_CONFIG['delete_enable'] = false;
 
 /*
@@ -257,7 +242,7 @@ $_CONFIG['log_file'] = "";
 // For example: $_CONFIG['starting_dir'] = "./mysubdir/";
 // Default: $_CONFIG['starting_dir'] = ".";
 //
-$_CONFIG['starting_dir'] = ".";
+$_CONFIG['starting_dir'] = "./";
 
 //
 // Location in the server. Usually this does not have to be set manually.
@@ -290,121 +275,6 @@ $_CONFIG['session_name'] = "";
 
 $_TRANSLATIONS = array();
 
-// Albanian
-$_TRANSLATIONS["al"] = array(
-	"file_name" => "Emri Skedarit",
-	"size" => "Madhësia",
-	"last_changed" => "Ndryshuar",
-	"total_used_space" => "Memorija e përdorur total",
-	"free_space" => "Memorija e lirë",
-	"password" => "Fjalëkalimi",
-	"upload" => "Ngarko skedarë",
-	"failed_upload" => "Ngarkimi i skedarit dështoi!",
-	"failed_move" => "Lëvizja e skedarit në udhëzuesin e saktë deshtoi!",
-	"wrong_password" => "Fjalëkalimi i Gabuar!!",
-	"make_directory" => "New dir",
-	"new_dir_failed" => "Failed to create directory",
-	"chmod_dir_failed" => "Failed to change directory rights",
-	"unable_to_read_dir" => "Unable to read directory",
-	"location" => "Location",
-	"root" => "Root"
-);
-
-// Bulgarian
-$_TRANSLATIONS["bg"] = array(
-	"file_name" => "Име",
-	"size" => "Размер",
-	"last_changed" => "Последна промяна",
-	"total_used_space" => "Общо използвано",
-	"free_space" => "Свободно място",
-	"password" => "Парола",
-	"upload" => "Качване",
-	"failed_upload" => "Неуспешно качване на файла!",
-	"failed_move" => "Неуспешно преместване на файла в правилната директория!",
-	"wrong_password" => "Грешна парола",
-	"make_directory" => "Нова директория",
-	"new_dir_failed" => "Грешка при създаване на директорията",
-	"chmod_dir_failed" => "Грешка при смяна на правата до директорията",
-	"unable_to_read_dir" => "Директорията не може да бъде прочетена",
-	"location" => "Път",
-	"root" => "Корен",
-	"log_file_permission_error" => "Скриптът няма права за запис в лог файла.",
-	"upload_not_allowed" => "Настройките на скрипта не позволяват качване в тази директория.",
-	"upload_dir_not_writable" => "Нямате право за запис в тази директория.",
-	"mobile_version" => "Мобилна версия",
-	"standard_version" => "Стандартен изглед",
-	"page_load_time" => "Страницата е генерирана за %.2f мс",
-	"wrong_pass" => "Грешен потребител или парола",
-	"username" => "Потребител",
-	"log_in" => "Вход",
-	"upload_type_not_allowed" => "Този файлов формат е забранен за качване.",
-	"del" => "Изтриване",
-	"log_out" => "Изход"
-);
-
-// Czech
-$_TRANSLATIONS["cz"] = array(
-	"file_name" => "Název souboru",
-	"size" => "Velikost",
-	"last_changed" => "Změněno",
-	"total_used_space" => "Obsazený prostor",
-	"free_space" => "Volný prostor",
-	"password" => "Heslo",
-	"upload" => "Nahrát",
-	"failed_upload" => "Nahrávání se nezdařilo!",
-	"failed_move" => "Přesun souboru do určeného adresáře se nezdařil!",
-	"wrong_password" => "Chybné heslo",
-	"make_directory" => "Nový adresář",
-	"new_dir_failed" => "Vytvoření adresáře se nezdařilo",
-	"chmod_dir_failed" => "Změna práv adresáře se nezdařila",
-	"unable_to_read_dir" => "Chyba při čtení adresáře",
-	"location" => "Umístění",
-	"root" => "Kořenový adresář",
-	"log_file_permission_error" => "Skript nemá oprávnění k zápisu do souboru protokolu.",
-	"upload_not_allowed" => "Konfigurační skript neumožňuje nahrávání v tomto adresáři.",
-	"upload_dir_not_writable" => "Tento adresář nemá oprávnění k zápisu.",
-	"mobile_version" => "Zobrazení pro mobil",
-	"standard_version" => "Standardní zobrazení",
-	"page_load_time" => "Stránka nahrána za %.2f ms",
-	"wrong_pass" => "Špatné uživatelské jméno nebo heslo",
-	"username" => "Uživatelské jméno",
-	"log_in" => "Přihlásit se",
-	"upload_type_not_allowed" => "Tento typ souboru není povolen pro nahrávání.",
-	"del" => "Smazat",
-	"log_out" => "Odhlásit se"
-);
-
-// Dutch
-$_TRANSLATIONS["nl"] = array(
-	"file_name" => "Bestandsnaam",
-	"size" => "Omvang",
-	"last_changed" => "Laatst gewijzigd",
-	"total_used_space" => "Totaal gebruikte ruimte",
-	"free_space" => "Beschikbaar",
-	"password" => "Wachtwoord",
-	"upload" => "Upload",
-	"failed_upload" => "Fout bij uploaden van bestand!",
-	"failed_move" => "Fout bij het verplaatsen van tijdelijk uploadbestand!",
-	"wrong_password" => "Fout wachtwoord!",
-	"make_directory" => "Nieuwe folder",
-	"new_dir_failed" => "Fout bij aanmaken folder!",
-	"chmod_dir_failed" => "Rechten konden niet gewijzigd worden!",
-	"unable_to_read_dir" => "Niet mogelijk om directorie te lezen",
-	"location" => "Locatie",
-	"root" => "Root",
-	"log_file_permission_error" => "Script heeft geen toegang tot het logbestand.",
-	"upload_not_allowed" => "Uploaden van bestanden is niet toegestaan.",
-	"upload_dir_not_writable" => "Het is niet toegestaan in deze directorie bestanden te plaatsen.",
-	"mobile_version" => "Mobiele weergave",
-	"standard_version" => "Standaard weergave",
-	"page_load_time" => "Pagina geladen in %.2f ms",
-	"wrong_pass" => "Foutieve gebruikersnaam of wachtwoord",
-	"username" => "Gebruikersnaam",
-	"log_in" => "Inloggen",
-	"upload_type_not_allowed" => "Dit type bestand is niet toegestaan.",
-	"del" => "Verwijder", // short for Delete
-	"log_out" => "Uitloggen"
-);
 
 // English
 $_TRANSLATIONS["en"] = array(
@@ -438,589 +308,35 @@ $_TRANSLATIONS["en"] = array(
 	"log_out" => "Log out"
 );
 
-// Estonian
-$_TRANSLATIONS["et"] = array(
-	"file_name" => "Faili nimi",
-	"size" => "Suurus",
-	"last_changed" => "Viimati muudetud",
-	"total_used_space" => "Kokku kasutatud",
-	"free_space" => "Vaba ruumi",
-	"password" => "Parool",
-	"upload" => "Uploadi",
-	"failed_upload" => "Faili ei &otilde;nnestunud serverisse laadida!",
-	"failed_move" => "Faili ei &otilde;nnestunud &otilde;igesse kausta liigutada!",
-	"wrong_password" => "Vale parool",
-	"make_directory" => "Uus kaust",
-	"new_dir_failed" => "Kausta loomine ebaõnnestus",
-	"chmod_dir_failed" => "Kausta õiguste muutmine ebaõnnestus",
-	"unable_to_read_dir" => "Unable to read directory",
-	"location" => "Asukoht",
-	"root" => "Peakaust"
-);
-
-// Finnish
-$_TRANSLATIONS["fi"] = array(
-	"file_name" => "Tiedoston nimi",
-	"size" => "Koko",
-	"last_changed" => "Muokattu",
-	"total_used_space" => "Yhteenlaskettu koko",
-	"free_space" => "Vapaa tila",
-	"password" => "Salasana",
-	"upload" => "Lisää tiedosto",
-	"failed_upload" => "Tiedoston lisäys epäonnistui!",
-	"failed_move" => "Tiedoston siirto kansioon epäonnistui!",
-	"wrong_password" => "Väärä salasana",
-	"make_directory" => "Uusi kansio",
-	"new_dir_failed" => "Uuden kansion luonti epäonnistui!",
-	"chmod_dir_failed" => "Kansion käyttäjäoikeuksien muuttaminen epäonnistui!",
-	"unable_to_read_dir" => "Kansion sisältöä ei voi lukea.",
-	"location" => "Paikka",
-	"root" => "Juurihakemisto",
-	"log_file_permission_error" => "Ohjelman ei ole sallittu kirjoittaa lokiin.",
-	"upload_not_allowed" => "Ohjelman asetukset eivät salli tiedoston lisäämistä tähän kansioon.",
-	"upload_dir_not_writable" => "Kansioon tallentaminen epäonnistui.",
-	"mobile_version" => "Mobiilinäkymä",
-	"standard_version" => "Tavallinen näkymä",
-	"page_load_time" => "Sivu ladattu %.2f ms:ssa",
-	"wrong_pass" => "Väärä käyttäjätunnus tai salasana",
-	"username" => "Käyttäjätunnus",
-	"log_in" => "Kirjaudu sisään",
-	"log_out" => "Kirjaudu ulos",
-	"upload_type_not_allowed" => "Tämän tiedostotyypin lisääminen on estetty.",
-	"del" => "Poista"
-);
-
-// French
-$_TRANSLATIONS["fr"] = array(
-	"file_name" => "Nom de fichier",
-	"size" => "Taille",
-	"last_changed" => "Ajouté",
-	"total_used_space" => "Espace total utilisé",
-	"free_space" => "Espace libre",
-	"password" => "Mot de passe",
-	"upload" => "Envoyer un fichier",
-	"failed_upload" => "Erreur lors de l'envoi",
-	"failed_move" => "Erreur lors du changement de dossier",
-	"wrong_password" => "Mauvais mot de passe",
-	"make_directory" => "Nouveau dossier",
-	"new_dir_failed" => "Erreur lors de la création du dossier",
-	"chmod_dir_failed" => "Impossible de changer les permissions du dossier",
-	"unable_to_read_dir" => "Impossible de lire le dossier",
-	"location" => "Localisation",
-	"root" => "Racine",
-	"log_file_permission_error" => "Le script ne possède pas les permissions pour écrire un fichier d'enregistrement.",
-	"upload_not_allowed" => "La configuration actuelle ne permet de déposer un fichier dans ce dossier.",
-	"upload_dir_not_writable" => "Ce dossier ne possède pas les permissions en écriture.",
-	"mobile_version" => "Vue mobile",
-	"standard_version" => "Vue standard",
-	"page_load_time" => "Page chargée en %.2f ms",
-	"wrong_pass" => "Identifiant ou mot de passe incorrect",
-	"username" => "Identifiant",
-	"log_in" => "Connexion",
-	"upload_type_not_allowed" => "Ce format de fichier n'est pas autorisé.",
-	"del" => "Effacer",
-	"log_out" => "Déconnexion"
-);
-
-// German
-$_TRANSLATIONS["de"] = array(
-	"file_name" => "Dateiname",
-	"size" => "Gr&ouml;&szlig;e",
-	"last_changed" => "Letzte &Auml;nderung",
-	"total_used_space" => "Benutzter Speicherplatz",
-	"free_space" => "Freier Speicherplatz",
-	"password" => "Passwort",
-	"upload" => "Upload",
-	"failed_upload" => "Upload ist fehlgeschlagen!",
-	"failed_move" => "Verschieben der Datei ist fehlgeschlagen!",
-	"wrong_password" => "Falsches Passwort",
-	"make_directory" => "Neuer Ordner",
-	"new_dir_failed" => "Erstellen des Ordners fehlgeschlagen",
-	"chmod_dir_failed" => "Ver&auml;nderung der Zugriffsrechte des Ordners fehlgeschlagen",
-	"unable_to_read_dir" => "Ordner konnte nicht gelesen werden",
-	"location" => "Ort",
-	"root" => "Wurzelverzeichnis",
-	"log_file_permission_error" => "Das Script kann wegen fehlenden Berechtigungen keine Log Datei schreiben.",
-	"upload_not_allowed" => "Die Scriptkonfiguration erlaubt kein Hochladen in dieses Verzeichnis.",
-	"upload_dir_not_writable" => "Dieser Ordner besitzt keine Schreibrechte.",
-	"mobile_version" => "Mobile Ansicht",
-	"standard_version" => "Normale Ansicht",
-	"page_load_time" => "Die Seite wurde in %.2f ms geladen",
-	"wrong_pass" => "Benutzername oder Kennwort falsch",
-	"username" => "Benutzername",
-	"log_in" => "Einloggen",
-	"upload_type_not_allowed" => "Dieser Dateityp darf nicht hochgeladen werden.",
-	"del" => "Entfernen",
-	"log_out" => "Ausloggen"
-);
-
-// Greek
-$_TRANSLATIONS["el"] = array(
-	"file_name" => "Όνομα αρχείου",
-	"size" => "Μέγεθος",
-	"last_changed" => "Τροποποιημένο",
-	"total_used_space" => "Χρησιμοποιημένος χώρος",
-	"free_space" => "Ελεύθερος χώρος",
-	"password" => "Εισάγεται κωδικό",
-	"upload" => "Φόρτωση",
-	"failed_upload" => "Αποτυχία φόρτωσης αρχείου!",
-	"failed_move" => "Αποτυχία μεταφοράς αρχείου στον κατάλληλο φάκελο!",
-	"wrong_password" => "Λάθος κωδικός",
-	"make_directory" => "Δημιουργία νέου φακέλου",
-	"new_dir_failed" => "Αποτυχία δημιουργίας νέου φακέλου",
-	"chmod_dir_failed" => "Αποτυχία τροποποίησης δικαιωμάτων φακέλου",
-	"unable_to_read_dir" => "Unable to read directory",
-	"location" => "Location",
-	"root" => "Root"
-);
 
 // Spanish
 $_TRANSLATIONS["es"] = array(
-	"file_name" => "Nombre del archivo",
-	"size" => "Tamaño",
-	"last_changed" => "Último cambio",
-	"total_used_space" => "Espacio total usado",
+	"file_name" => "Nombre de archivo",
+	"size" => "tamaño",
+	"last_changed" => "Ultima modificación",
+	"total_used_space" => "Total espacio usado",
 	"free_space" => "Espacio libre",
 	"password" => "Contraseña",
 	"upload" => "Subir el archivo",
-	"failed_upload" => "¡Error al subir el archivo!",
-	"failed_move" => "¡Error al mover el archivo al directorio seleccionado!",
+	"failed_upload" => "Error al subir el archivo!",
+	"failed_move" => "Error al mover el archivo al directorio seleccionado!",
 	"wrong_password" => "Contraseña incorrecta",
 	"make_directory" => "Crear directorio",
 	"new_dir_failed" => "Error al crear el directorio",
-	"chmod_dir_failed" => "Error al cambiar los permisos del directorio",
+	"chmod_dir_failed" => "Error al cambiar los derechos de directorio",
 	"unable_to_read_dir" => "No es posible leer el directorio",
 	"location" => "Localización",
 	"root" => "Raíz",
-	"log_file_permission_error" => "El script no tiene permisos para escribir en el archivo de registro.",
-	"upload_not_allowed" => "La configuración del script no permite subir archivos en este directorio.",
-	"upload_dir_not_writable" => "Este directorio no tiene permisos de escritura.",
+	"page_load_time" => "cargado en %.2f ms",
 	"mobile_version" => "Vista móvil",
 	"standard_version" => "Vista estándar",
-	"page_load_time" => "Página cargada en %.2f ms",
-	"wrong_pass" => "Nombre de usuario o contraseña incorrectos",
-	"username" => "Usuario",
-	"log_in" => "Iniciar sesión",
-	"upload_type_not_allowed" => "Este tipo de archivo no está permitido para la subida.",
-	"del" => "Eliminar",
-	"log_out" => "Cerrar sesión"
+	
 );
 
-// Esperanto
-$_TRANSLATIONS["eo"] = array(
-	"file_name" => "Dosiernomo",
-	"size" => "Grando",
-	"last_changed" => "Lasta ŝanĝo",
-	"total_used_space" => "Uzata spaco",
-	"free_space" => "Disponebla spaco",
-	"password" => "pasvorto",
-	"upload" => "Alŝuto",
-	"failed_upload" => "Alŝuto malsukcesis!",
-	"failed_move" => "Movo de la dosiero malsukcesis!",
-	"wrong_password" => "Malĝusta pasvorto",
-	"make_directory" => "Nova dosierujo",
-	"new_dir_failed" => "Kreado de dosierujo malsukcesis",
-	"chmod_dir_failed" => "Ŝanĝo de dosierujaj rajtoj malsukcesis",
-	"unable_to_read_dir" => "Dosierujo ne estas legebla",
-	"location" => "Loko",
-	"root" => "Radiko",
-	"log_file_permission_error" => "La skripto ne rajtas skribi la protokolan dosieron.",
-	"upload_not_allowed" => "La skripto malpermesas alŝuti en ĉi tiun dosierujon.",
-	"upload_dir_not_writable" => "Ĉi tiu dosierujo ne rajtigas skribadon.",
-	"mobile_version" => "Vido por mobilaj iloj",
-	"standard_version" => "Defaŭlta vido",
-	"page_load_time" => "Paĝo ŝarĝita en %.2f ms",
-	"wrong_pass" => "Malĝusta salutnomo aŭ pasvorto",
-	"username" => "Salutnomo",
-	"log_in" => "Ensaluto",
-	"upload_type_not_allowed" => "Alŝuto estas malpermesita por ĉi tiu dosiertipo.",
-	"del" => "For", // short for Delete
-	"log_out" => "Adiaŭo"
-);
-
-// Hungarian
-$_TRANSLATIONS["hu"] = array(
-	"file_name" => "Fájl név",
-	"size" => "Méret",
-	"last_changed" => "Utolsó módosítás",
-	"total_used_space" => "Összes elfoglalt terület",
-	"free_space" => "Szabad terület",
-	"password" => "Jelszó",
-	"upload" => "Feltöltés",
-	"failed_upload" => "A fájl feltöltése nem sikerült!",
-	"failed_move" => "A fájl mozgatása nem sikerült!",
-	"wrong_password" => "Hibás jelszó",
-	"make_directory" => "Új mappa",
-	"new_dir_failed" => "A mappa létrehozása nem sikerült",
-	"chmod_dir_failed" => "A mappa jogainak megváltoztatása nem sikerült",
-	"unable_to_read_dir" => "A mappa nem olvasható",
-	"location" => "Hely",
-	"root" => "Gyökér",
-	"log_file_permission_error" => "A log fájl írása jogosultsági okok miatt nem sikerült.",
-	"upload_not_allowed" => "Ebbe a mappába a feltöltés nem engedélyezett.",
-	"upload_dir_not_writable" => "A mappa nem írható.",
-	"mobile_version" => "Mobil nézet",
-	"standard_version" => "Web nézet",
-	"page_load_time" => "Letöltési id? %.2f ms",
-	"wrong_pass" => "Rossz felhasználónév vagy jelszó",
-	"username" => "Felhasználónév",
-	"log_in" => "Belépés",
-	"upload_type_not_allowed" => "A fájltípus feltöltése tiltott."
-);
-
-// Italian
-$_TRANSLATIONS["it"] = array(
-	"file_name" => "Nome file",
-	"size" => "Dimensione",
-	"last_changed" => "Ultima modifica",
-	"total_used_space" => "Totale spazio usato",
-	"free_space" => "Spazio disponibile",
-	"password" => "Parola chiave",
-	"upload" => "Caricamento file",
-	"failed_upload" => "Caricamento del file fallito!",
-	"failed_move" => "Spostamento del file nella cartella fallito!",
-	"wrong_password" => "Password sbagliata",
-	"make_directory" => "Nuova cartella",
-	"new_dir_failed" => "Creazione cartella fallita!",
-	"chmod_dir_failed" => "Modifica dei permessi della cartella fallita!",
-	"unable_to_read_dir" => "Non abilitato a leggere la cartella",
-	"location" => "Posizione",
-	"root" => "Indice",
-	"log_file_permission_error" => "Lo script non ha i permessi per scrivere il file di log.",
-	"upload_not_allowed" => "La configurazione dello script non permette l'upload in questa cartella.",
-	"upload_dir_not_writable" => "Questa cartella non ha i permessi di scrittura.",
-	"mobile_version" => "Visualizzazione Mobile",
-	"standard_version" => "Visualizzazione Standard",
-	"page_load_time" => "Page aperta in %.2f min",
-	"wrong_pass" => "Username o password errati",
-	"username" => "Username",
-	"log_in" => "Log in",
-	"upload_type_not_allowed" => "Questo formato di file non è abilitato per l'upload.",
-	"del" => "Cancella", // short for Delete
-	"log_out" => "Esci"
-);
-
-// Korean
-$_TRANSLATIONS["ko"] = array(
-	"file_name" => "이름",
-	"size" => "크기",
-	"last_changed" => "마지막 수정",
-	"total_used_space" => "사용한 공간",
-	"free_space" => "남은 공간",
-	"password" => "비밀번호",
-	"upload" => "올리기",
-	"failed_upload" => "파일을 올릴 수 없습니다.",
-	"failed_move" => "파일을 옮길 수 없습니다.",
-	"wrong_password" => "비밀번호가 올바르지 않습니다.",
-	"make_directory" => "만들기",
-	"new_dir_failed" => "폴더를 만들 수 없습니다.",
-	"chmod_dir_failed" => "권한 설정을 할 수 없습니다.",
-	"unable_to_read_dir" => "폴더를 읽을 수 없습니다.",
-	"location" => "위치",
-	"root" => "최상위 폴더",
-	"log_file_permission_error" => "로그 파일의 위치에 쓰기 권한을 가지고 있지 않습니다.",
-	"upload_not_allowed" => "이 위치에 올릴 수 없습니다.",
-	"upload_dir_not_writable" => "이 위치에 쓰기 권한을 가지고 있지 않습니다.",
-	"mobile_version" => "모바일 버전으로 보기",
-	"standard_version" => "표준 화면으로 보기",
-	"page_load_time" => "페이지 로드 %.2f ms",
-	"wrong_pass" => "사용자 이름 또는 비밀번호가 올바르지 않습니다.",
-	"username" => "사용자 이름",
-	"log_in" => "로그인",
-	"upload_type_not_allowed" => "이 종류의 파일은 올릴 수 없습니다.",
-	"del" => "삭제",
-	"log_out" => "로그아웃"
-); 
-
-// Norwegian
-$_TRANSLATIONS["no"] = array(
-	"file_name" => "Navn",
-	"size" => "Størrelse",
-	"last_changed" => "Endret",
-	"total_used_space" => "Brukt plass",
-	"free_space" => "Resterende plass",
-	"password" => "Passord",
-	"upload" => "Last opp",
-	"failed_upload" => "Opplasting gikk galt",
-	"failed_move" => "Kunne ikke flytte objektet",
-	"wrong_password" => "Feil passord",
-	"make_directory" => "Ny mappe",
-	"new_dir_failed" => "Kunne ikke lage ny mappe",
-	"chmod_dir_failed" => "Kunne ikke endre rettigheter",
-	"unable_to_read_dir" => "Kunne ikke lese mappen",
-	"location" => "Område",
-	"root" => "Rot"
-);
-
-//Polish
-$_TRANSLATIONS["pl"] = array(
-  "file_name" => "Nazwa pliku",
-  "size" => "Rozmiar",
-  "last_changed" => "Data zmiany",
-  "total_used_space" => "Cała przestrzeń",
-  "free_space" => "Wolna przestrzeń",
-  "password" => "Hasło",
-  "upload" => "Prześlij",
-  "failed_upload" => "Przesłanie pliku nie powiodło się",
-  "failed_move" => "Przenoszenie pliku nie powiodło się!",
-  "wrong_password" => "Niepoprawne hasło",
-  "make_directory" => "Nowy folder",
-  "new_dir_failed" => "Błąd podczas tworzenia nowego folderu",
-  "chmod_dir_failed" => "Błąd podczas zmiany uprawnień folderu",
-  "unable_to_read_dir" => "Odczytanie folderu nie powiodło się",
-  "location" => "Miejsce",
-  "root" => "Start",
-  "log_file_permission_error" => "Brak uprawnień aby utworzyć dziennik działań.",
-  "upload_not_allowed" => "Konfiguracja zabrania przesłania pliku do tego folderu.",
-  "upload_dir_not_writable" => "Nie można zapisać pliku do tego folderu.",
-  "mobile_version" => "Wersja mobilna",
-  "standard_version" => "Widok standardowy",
-  "page_load_time" => "Załadowano w %.2f ms",
-  "wrong_pass" => "Niepoprawna nazwa użytkownika lub złe hasło",
-  "username" => "Użytkownik",
-  "log_in" => "Zaloguj się",
-  "upload_type_not_allowed" => "Ten rodzaj pliku jest zabroniony.",
-  "del" => "Kasuj",
-  "log_out" => "Wyloguj się"
-);
-
-// Portuguese (Brazil)
-$_TRANSLATIONS["pt_BR"] = array(
-	"file_name" => "Nome do arquivo",
-	"size" => "Tamanho",
-	"last_changed" => "Modificado em",
-	"total_used_space" => "Total de espaço utilizado",
-	"free_space" => "Espaço livre",
-	"password" => "Senha",
-	"upload" => "Enviar",
-	"failed_upload" => "Falha ao enviar o arquivo!",
-	"failed_move" => "Falha ao mover o arquivo para o diretório correto!",
-	"wrong_password" => "Senha errada",
-	"make_directory" => "Nova pasta",
-	"new_dir_failed" => "Falha ao criar diretório",
-	"chmod_dir_failed" => "Falha ao mudar os privilégios do diretório",
-	"unable_to_read_dir" => "Não foi possível ler o diretório",
-	"location" => "Localização",
-	"root" => "Raíz",
-	"log_file_permission_error" => "O script não tem permissão para escrever o arquivo de log.",
-	"upload_not_allowed" => "A configuração do script não permite envios neste diretório.",
-	"upload_dir_not_writable" => "Não há permissão para escrita neste diretório.",
-	"mobile_version" => "Versão Móvel",
-	"standard_version" => "Versão Padrão",
-	"page_load_time" => "Página carregada em %.2f ms",
-	"wrong_pass" => "Nome de usuário ou senha errados",
-	"username" => "Nome de Usuário",
-	"log_in" => "Log in",
-	"upload_type_not_allowed" => "Não é permitido envio de arquivos deste tipo.",
-	"del" => "Deletar",
-	"log_out" => "Log out"
-);
-
-// Portuguese (Portugal)
-$_TRANSLATIONS["pt_PT"] = array(
-	"file_name" => "Nome do ficheiro",
-	"size" => "Tamanho",
-	"last_changed" => "Modificado em",
-	"total_used_space" => "Total de espaço utilizado",
-	"free_space" => "Espaço livre",
-	"password" => "Palavra-passe",
-	"upload" => "Enviar",
-	"failed_upload" => "Falha ao enviar o ficheiro!",
-	"failed_move" => "Falha ao mover o ficheiro para a pasta correcta!",
-	"wrong_password" => "Palavra-passe errada",
-	"make_directory" => "Nova pasta",
-	"new_dir_failed" => "Falha ao criar pasta",
-	"chmod_dir_failed" => "Falha ao mudar os privilégios da pasta",
-	"unable_to_read_dir" => "Não foi possível ler a pasta",
-	"location" => "Localização",
-	"root" => "Raíz",
-	"log_file_permission_error" => "O script não tem permissão para escrever o ficheiro de log.",
-	"upload_not_allowed" => "A configuração do script não permite envios para esta pasta.",
-	"upload_dir_not_writable" => "Não há permissão para escrita nesta pasta.",
-	"mobile_version" => "Versão Móvel",
-	"standard_version" => "Versão Padrão",
-	"page_load_time" => "Página carregada em %.2f ms",
-	"wrong_pass" => "Nome de utilizador ou palavra-passe incorrectos",
-	"username" => "Nome de utilizador",
-	"log_in" => "Entrar",
-	"upload_type_not_allowed" => "Não é permitido o envio de ficheiros deste tipo.",
-	"del" => "Apagar",
-	"log_out" => "Sair"
-);
-
-// Romanian
-$_TRANSLATIONS["ro"] = array(
-	"file_name" => "Nume fisier",
-	"size" => "Marime",
-	"last_changed" => "Ultima modificare",
-	"total_used_space" => "Spatiu total utilizat",
-	"free_space" => "Spatiu disponibil",
-	"password" => "Parola",
-	"upload" => "Incarcare fisier",
-	"failed_upload" => "Incarcarea fisierului a esuat!",
-	"failed_move" => "Mutarea fisierului in alt director a esuat!",
-	"wrong_password" => "Parol gresita!",
-	"make_directory" => "Director nou",
-	"new_dir_failed" => "Eroare la crearea directorului",
-	"chmod_dir_failed" => "Eroare la modificarea drepturilor pe director",
-	"unable_to_read_dir" => "Nu s-a putut citi directorul",
-	"location" => "Locatie",
-	"root" => "Root"
-);
-
-// Russian
-$_TRANSLATIONS["ru"] = array(
-	"file_name" => "Имя файла",
-	"size" => "Размер",
-	"last_changed" => "Последнее изменение",
-	"total_used_space" => "Всего использовано",
-	"free_space" => "Свободно",
-	"password" => "Пароль",
-	"upload" => "Загрузка",
-	"failed_upload" => "Не удалось загрузить файл!",
-	"failed_move" => "Не удалось переместить файл в нужную папку!",
-	"wrong_password" => "Неверный пароль",
-	"make_directory" => "Новая папка",
-	"new_dir_failed" => "Не удалось создать папку",
-	"chmod_dir_failed" => "Не удалось изменить права доступа к папке",
-	"unable_to_read_dir" => "Не возможно прочитать папку",
-	"location" => "Расположение",
-	"root" => "Корневая папка",
-	"log_file_permission_error" => "Скрипт не имеет прав для записи лога файла.",
-	"upload_not_allowed" => "Загрузка в эту папку запрещена в настройках скрипта",
-	"upload_dir_not_writable" => "В эту папку запрещена запись",
-	"mobile_version" => "Мобильный вид",
-	"standard_version" => "Обычный вид",
-	"page_load_time" => "Страница загружена за %.2f мс.",
-	"wrong_pass" => "Неверное имя пользователя или пароль",
-	"username" => "Имя пользователя",
-	"log_in" => "Войти",
-	"upload_type_not_allowed" => "Этот тип файла запрещено загружать",
-	"del" => "удалить",
-	"log_out" => "выйти"
-);
-
-// Slovensky
-$_TRANSLATIONS["sk"] = array(
-	"file_name" => "Meno súboru",
-	"size" => "Veľkosť",
-	"last_changed" => "Posledná zmena",
-	"total_used_space" => "Použité miesto celkom",
-	"free_space" => "Voľné miesto",
-	"password" => "Heslo",
-	"upload" => "Nahranie súborov",
-	"failed_upload" => "Chyba nahrávania súboru!",
-	"failed_move" => "Nepodarilo sa presunúť súbor do vybraného adresára!",
-	"wrong_password" => "Neplatné heslo!",
-	"make_directory" => "Nový priečinok",
-	"new_dir_failed" => "Nepodarilo sa vytvoriť adresár!",
-	"chmod_dir_failed" => "Nepodarilo sa zmeniť práva adresára!",
-	"unable_to_read_dir" => "Nemôžem čítať adresár",
-	"location" => "Umiestnenie",
-	"root" => "Domov"
-);
-
-// Swedish
-$_TRANSLATIONS["sv"] = array(
-	"file_name" => "Filnamn",
-	"size" => "Storlek",
-	"last_changed" => "Senast ändrad",
-	"total_used_space" => "Totalt upptaget utrymme",
-	"free_space" => "Ledigt utrymme",
-	"password" => "Lösenord",
-	"upload" => "Ladda upp",
-	"failed_upload" => "Fel vid uppladdning av fil!",
-	"failed_move" => "Fel vid flytt av fil till mapp!",
-	"wrong_password" => "Fel lösenord",
-	"make_directory" => "Ny mapp",
-	"new_dir_failed" => "Fel vid skapande av mapp",
-	"chmod_dir_failed" => "Fel vid ändring av mappens egenskaper",
-	"unable_to_read_dir" => "Kan inte lasa den filen",
-	"location" => "Plats",
-	"root" => "Hem",
-	"log_file_permission_error" => "Scriptet har inte behörighet att skriva till loggfilen.",
-	"upload_not_allowed" => "Skriptets konfiguration tillåter inte uppladdning till denna katalog.",
-	"upload_dir_not_writable" => "Denna katalog har inte behörigheter för att skriva.",
-	"mobile_version" => "Mobilvisning",
-	"standard_version" => "Standardvisning",
-	"page_load_time" => "Sidan laddades på %.2f ms",
-	"wrong_pass" => "Fel användarnamn eller lösenord",
-	"username" => "Användarnamn",
-	"log_in" => "Logga in",
-	"upload_type_not_allowed" => "Denna filtyp är det inte tillåtet att ladda upp.",
-	"del" => "Ta bort",
-	"log_out" => "Logga ut"
-);
-
-
-// Turkish
-$_TRANSLATIONS["tr"] = array(
-	"file_name" => "Dosya Adı",
-	"size" => "Boyut",
-	"last_changed" => "Son Değişiklik",
-	"total_used_space" => "Toplam Kullanılan Alan",
-	"free_space" => "Boş Alan",
-	"password" => "Parola",
-	"upload" => "Yükle",
-	"failed_upload" => "Dosya yüklemesi başarısız!",
-	"failed_move" => "Dosyanın doğru klasöre taşınması başarısız!",
-	"wrong_password" => "Hatalı Parola",
-	"make_directory" => "Yeni Klasör",
-	"new_dir_failed" => "Klasör oluşturma başarısız",
-	"chmod_dir_failed" => "Klasör izinleri değiştirme başarısız",
-	"unable_to_read_dir" => "Klasör okunamadı",
-	"location" => "Konum",
-	"root" => "Ana Klasör",
-	"log_file_permission_error" => "Log dosyası oluşturulurken yetersiz izin hatası.",
-	"upload_not_allowed" => "Konfigürasyon bu klasöre dosya yüklemeye izin vermiyor.",
-	"upload_dir_not_writable" => "Bu klasör yazma izinlerine sahip değil.",
-	"mobile_version" => "Mobil Görünüm",
-	"standard_version" => "Standart Görünüm",
-	"page_load_time" => "Sayfa yükleme süresi %.2f ms",
-	"wrong_pass" => "Hatalı kullanıcı adı veya parola",
-	"username" => "Kullanıcı Adı",
-	"log_in" => "Giriş Yap",
-	"upload_type_not_allowed" => "Bu dosya türünün yüklenmesine izin verilmiyor.",
-	"del" => "Sil",
-	"log_out" => "Çıkış Yap"
-);
-
-// 简体中文(Simplified Chinese)
-$_TRANSLATIONS["zh_CN"] = array(
-	"file_name" => "文件名",
-	"size" => "大小",
-	"last_changed" => "最后修改",
-	"total_used_space" => "总计使用空间",
-	"free_space" => "剩余空间",
-	"password" => "密码",
-	"upload" => "上传",
-	"failed_upload" => "上传失败",
-	"failed_move" => "移动失败",
-	"wrong_password" => "密码错误",
-	"make_directory" => "创建目录",
-	"new_dir_failed" => "创建目录失败",
-	"chmod_dir_failed" => "修改目录权限失败",
-	"unable_to_read_dir" => "无法读取目录",
-	"location" => "路径",
-	"root" => "根目录",
-	"log_file_permission_error" => "日志文件权限错误",
-	"upload_not_allowed" => "禁止上传",
-	"upload_dir_not_writable" => "上传目录不可写",
-	"mobile_version" => "移动版本",
-	"standard_version" => "标准版本",
-	"page_load_time" => "页面载入时间：%.2f ms",
-	"wrong_pass" => "密码错误",
-	"username" => "用户名",
-	"log_in" => "登录",
-	"log_out" => "注销",
-	"upload_type_not_allowed" => "禁止上传该文件类型",
-	"del" => "删除"
-);
 
 /***************************************************************************/
 /*   CSS FOR TWEAKING THE DESIGN                                           */
 /***************************************************************************/
-
 
 function css()
 {
@@ -1107,8 +423,6 @@ input {
 table.table {
 	width:100%;
 	border-collapse: collapse;
-	table-layout: fixed;
-	word-wrap: break-word;
 }
 
 table.table td{
@@ -1728,7 +1042,7 @@ class ImageServer
 				header('ETag: "'.$etag.'"');
 				header('Last-Modified: '.$mtime);
 				header('Content-type: image/gif');
-				if(is_scalar($_GET['img']) && strlen($_GET['img']) > 0 && isset($_IMAGES[$_GET['img']]))
+				if(strlen($_GET['img']) > 0 && isset($_IMAGES[$_GET['img']]))
 					print base64_decode($_IMAGES[$_GET['img']]);
 				else
 					print base64_decode($_IMAGES["unknown"]);
@@ -1737,7 +1051,7 @@ class ImageServer
 		}
 		else if(isset($_GET['thumb']))
 		{
-			if(is_scalar($_GET['thumb']) && strlen($_GET['thumb']) > 0 && EncodeExplorer::getConfig('thumbnails') == true)
+			if(strlen($_GET['thumb']) > 0 && EncodeExplorer::getConfig('thumbnails') == true)
 			{
 				ImageServer::showThumbnail($_GET['thumb']);
 			}
@@ -2243,17 +1557,14 @@ class Dir
 {
 	var $name;
 	var $location;
-	var $modTime;
 
 	//
 	// Constructor
 	//
-	function __construct($name, $location)
+	function Dir($name, $location)
 	{
 		$this->name = $name;
 		$this->location = $location;
-
-		$this->modTime = filemtime($this->location->getDir(true, false, false, 0).$this->getName());
 	}
 
 	function getName()
@@ -2263,17 +1574,12 @@ class Dir
 
 	function getNameHtml()
 	{
-		return htmlspecialchars($this->name);
+		return  utf8_encode( htmlspecialchars($this->name,ENT_QUOTES,'ISO-8859-1'));
 	}
 
 	function getNameEncoded()
 	{
-		return rawurlencode($this->name);
-	}
-
-	function getModTime()
-	{
-		return $this->modTime;
+		return rawurlencode($this->name);	
 	}
 
 	//
@@ -2283,7 +1589,6 @@ class Dir
 	{
 		print("Dir name (htmlspecialchars): ".$this->getName()."\n");
 		print("Dir location: ".$this->location->getDir(true, false, false, 0)."\n");
-		print("Dir modTime: ".$this->modTime."\n");
 	}
 }
 
@@ -2302,7 +1607,7 @@ class File
 	//
 	// Constructor
 	//
-	function __construct($name, $location)
+	function File($name, $location)
 	{
 		$this->name = $name;
 		$this->location = $location;
@@ -2320,11 +1625,13 @@ class File
 	function getNameEncoded()
 	{
 		return rawurlencode($this->name);
+		//return $this->name;
 	}
 
 	function getNameHtml()
 	{
-		return htmlspecialchars($this->name);
+		return utf8_encode(htmlspecialchars($this->name,ENT_QUOTES,'ISO-8859-1'));
+		//return $this->name;
 	}
 
 	function getSize()
@@ -2499,7 +1806,7 @@ class Location
 	//
 	function init()
 	{
-		if(!isset($_GET['dir']) || !is_scalar($_GET['dir']) || strlen($_GET['dir']) == 0)
+		if(!isset($_GET['dir']) || strlen($_GET['dir']) == 0)
 		{
 			$this->path = $this->splitPath(EncodeExplorer::getConfig('starting_dir'));
 		}
@@ -2584,19 +1891,26 @@ class EncodeExplorer
 	//
 	function init()
 	{
-		global $_TRANSLATIONS;
-
-		// Here we filter the comparison function (sort by) and comparison order (sort as) chosen by user
-		$this->sort_by = (isset($_GET['sort_by']) && in_array($_GET['sort_by'], array('name', 'size', 'mod'))) ? $_GET['sort_by'] : 'name';
-		$this->sort_as = (isset($_GET['sort_as']) && in_array($_GET['sort_as'], array('asc', 'desc'))) ? $_GET['sort_as'] : 'asc';
-
-		// Mitigate date.timezone warning
-		if(function_exists('date_default_timezone_get') && function_exists('date_default_timezone_set'))
+		$this->sort_by = "";
+		$this->sort_as = "";
+		if(isset($_GET["sort_by"], $_GET["sort_as"]))
 		{
-			@date_default_timezone_set(date_default_timezone_get());
+			if($_GET["sort_by"] == "name" || $_GET["sort_by"] == "size" || $_GET["sort_by"] == "mod")
+				if($_GET["sort_as"] == "asc" || $_GET["sort_as"] == "desc")
+				{
+					$this->sort_by = $_GET["sort_by"];
+					$this->sort_as = $_GET["sort_as"];
+				}
+		}
+		if(strlen($this->sort_by) <= 0 || strlen($this->sort_as) <= 0)
+		{
+			$this->sort_by = "name";
+			$this->sort_as = "desc";
 		}
 
-		if(isset($_GET['lang']) && is_scalar($_GET['lang']) && isset($_TRANSLATIONS[$_GET['lang']]))
+
+		global $_TRANSLATIONS;
+		if(isset($_GET['lang'], $_TRANSLATIONS[$_GET['lang']]))
 			$this->lang = $_GET['lang'];
 		else
 			$this->lang = EncodeExplorer::getConfig("lang");
@@ -2618,6 +1932,7 @@ class EncodeExplorer
 	//
 	function readDir()
 	{
+	    
 		global $encodeExplorer;
 		//
 		// Reading the data of files and directories
@@ -2628,7 +1943,7 @@ class EncodeExplorer
 			$this->files = array();
 			while (false !== ($object = readdir($open_dir)))
 			{
-				if($object != "." && $object != "..")
+				if($object != "." && $object !== "..")
 				{
 					if(is_dir($this->location->getDir(true, false, false, 0)."/".$object))
 					{
@@ -2636,7 +1951,10 @@ class EncodeExplorer
 							$this->dirs[] = new Dir($object, $this->location);
 					}
 					else if(!in_array($object, EncodeExplorer::getConfig('hidden_files')))
-						$this->files[] = new File($object, $this->location);
+						 { 
+						   $this->files[] = new File($object, $this->location);
+						    //echo htmlentities($object, ENT_QUOTES,'ISO-8859-1')."<br>";
+						   }
 				}
 			}
 			closedir($open_dir);
@@ -2655,7 +1973,7 @@ class EncodeExplorer
 		if ($dir = opendir($start_dir))
 		{
 			$total = 0;
-			while (false !== ($file = readdir($dir)))
+			while ((($file = readdir($dir)) !== false))
 			{
 				if (!in_array($file, $ignore_files))
 				{
@@ -2687,37 +2005,31 @@ class EncodeExplorer
 
 	function sort()
 	{
-		// Here we filter the comparison functions supported by our directory object
-		$sort_by = in_array($this->sort_by, array('name', 'mod')) ? $this->sort_by : 'name';
-
-		if(is_array($this->dirs)) {
-			usort($this->dirs, array('EncodeExplorer', 'cmp_'.$sort_by));
-			if($this->sort_as == "desc") {
-				$this->dirs = array_reverse($this->dirs);
-			}
+		if(is_array($this->files)){
+			usort($this->files, "EncodeExplorer::cmp_".$this->sort_by);
+			if($this->sort_as == "desc")
+				$this->files = array_reverse($this->files);
 		}
 
-		// Here we filter the comparison functions supported by our file object
-		$sort_by = in_array($this->sort_by, array('name', 'size', 'mod')) ? $this->sort_by : 'name';
-
-		if(is_array($this->files)) {
-			usort($this->files, array('EncodeExplorer', 'cmp_'.$sort_by));
-			if($this->sort_as == "desc") {
-				$this->files = array_reverse($this->files);
-			}
+		if(is_array($this->dirs)){
+			usort($this->dirs, "EncodeExplorer::cmp_name");
+			if($this->sort_by == "name" && $this->sort_as == "desc")
+				$this->dirs = array_reverse($this->dirs);
 		}
 	}
 
 	function makeArrow($sort_by)
 	{
-		// Ability to reverse the 'sort as' selected for the current field
-		// And propagate the current selected 'sort as' to the other fields
-		$sort_as = ($this->sort_as == "asc") ? "desc" : "asc";
-		$sort_as = ($this->sort_by == $sort_by) ? $sort_as : $this->sort_as;
-
-		// Only show image for the currently selected 'sort as' field
-		$img = ($this->sort_as == "asc") ? "arrow_up" : "arrow_down";
-		$img = ($this->sort_by == $sort_by) ? "<img style=\"border:0;\" alt=\"".$sort_as."\" src=\"?img=".$img."\" />" : "&nbsp;";
+		if($this->sort_by == $sort_by && $this->sort_as == "asc")
+		{
+			$sort_as = "desc";
+			$img = "arrow_up";
+		}
+		else
+		{
+			$sort_as = "asc";
+			$img = "arrow_down";
+		}
 
 		if($sort_by == "name")
 			$text = $this->getString("file_name");
@@ -2726,7 +2038,8 @@ class EncodeExplorer
 		else if($sort_by == "mod")
 			$text = $this->getString("last_changed");
 
-		return "<a href=\"".$this->makeLink(false, false, $sort_by, $sort_as, null, $this->location->getDir(false, true, false, 0))."\">{$text}{$img}</a>";
+		return "<a href=\"".$this->makeLink(false, false, $sort_by, $sort_as, null, $this->location->getDir(false, true, false, 0))."\">
+			$text <img style=\"border:0;\" alt=\"".$sort_as."\" src=\"?img=".$img."\" /></a>";
 	}
 
 	function makeLink($switchVersion, $logout, $sort_by, $sort_as, $delete, $dir)
@@ -2781,7 +2094,7 @@ class EncodeExplorer
 
 	function formatSize($size)
 	{
-		$sizes = array('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB');
+		$sizes = Array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB');
 		$y = $sizes[0];
 		for ($i = 1; (($i < count($sizes)) && ($size >= 1024)); $i++)
 		{
@@ -2807,7 +2120,7 @@ class EncodeExplorer
 	// Comparison functions for sorting.
 	//
 
-	public static function cmp_name($a, $b)
+	public static function cmp_name($b, $a)
 	{
 		return strcasecmp($a->name, $b->name);
 	}
@@ -2817,7 +2130,7 @@ class EncodeExplorer
 		return ($a->size - $b->size);
 	}
 
-	public static function cmp_mod($a, $b)
+	public static function cmp_mod($b, $a)
 	{
 		return ($a->modTime - $b->modTime);
 	}
@@ -2934,7 +2247,7 @@ if(($this->getConfig('log_file') != null && strlen($this->getConfig('log_file'))
 	|| (GateKeeper::isDeleteAllowed()))
 {
 ?>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function() {
@@ -3081,7 +2394,7 @@ if($this->mobile == false)
 ?>
 <tr class="row two">
 	<td class="icon"><img alt="dir" src="?img=directory" /></td>
-	<td colspan="<?php print (($this->mobile == true?1:(GateKeeper::isDeleteAllowed()?4:3))); ?>" class="long">
+	<td colspan="<?php print (($this->mobile == true?2:(GateKeeper::isDeleteAllowed()?4:3))); ?>" class="long">
 		<a class="item" href="<?php print $this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 1)); ?>">..</a>
 	</td>
 </tr>
@@ -3101,18 +2414,14 @@ if($this->dirs)
 		$row_style = ($row ? "one" : "two");
 		print "<tr class=\"row ".$row_style."\">\n";
 		print "<td class=\"icon\"><img alt=\"dir\" src=\"?img=directory\" /></td>\n";
-		print "<td class=\"name\" colspan=\"".($this->mobile == true ? 1:2)."\">\n";
+		print "<td class=\"name\" colspan=\"".($this->mobile == true?2:3)."\">\n";
 		print "<a href=\"".$this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded())."\" class=\"item dir\">";
 		print $dir->getNameHtml();
 		print "</a>\n";
 		print "</td>\n";
-		if($this->mobile != true)
-		{
-			print "<td class=\"changed\">".$this->formatModTime($dir->getModTime())."</td>\n";
-		}
-		if($this->mobile == false && GateKeeper::isDeleteAllowed())
-		{
-			print "<td class=\"del\"><a data-name=\"".htmlentities($dir->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\"><img src=\"?img=del\" alt=\"Delete\" /></a></td>";
+		if($this->mobile == false && GateKeeper::isDeleteAllowed()){
+			print "<td class=\"del\"><a data-name=\"".htmlentities($dir->getName(), ENT_QUOTES,'ISO-8859-1')."\" 
+			href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\"><img src=\"?img=del\" alt=\"Delete\" /></a></td>";
 		}
 		print "</tr>\n";
 		$row =! $row;
@@ -3130,8 +2439,11 @@ if($this->files)
 		$row_style = ($row ? "one" : "two");
 		print "<tr class=\"row ".$row_style.(++$count == count($this->files)?" last":"")."\">\n";
 		print "<td class=\"icon\"><img alt=\"".$file->getType()."\" src=\"".$this->makeIcon($file->getType())."\" /></td>\n";
-		print "<td class=\"name\" colspan=\"1\">\n";
+		print "<td class=\"name\">\n";
+		
+		//print "\t\t<a href=\"".$this->location->getDir(false, true, false, 0).$file->getName()."\"";
 		print "\t\t<a href=\"".$this->location->getDir(false, true, false, 0).$file->getNameEncoded()."\"";
+		
 		if(EncodeExplorer::getConfig('open_in_new_window') == true)
 			print "target=\"_blank\"";
 		print " class=\"item file";
@@ -3150,13 +2462,13 @@ if($this->files)
 			print "<td class=\"size\">".$this->formatSize($file->getSize())."</td>\n";
 			print "<td class=\"changed\">".$this->formatModTime($file->getModTime())."</td>\n";
 		}
-		if($this->mobile == false && GateKeeper::isDeleteAllowed())
-		{
+		if($this->mobile == false && GateKeeper::isDeleteAllowed()){
 			print "<td class=\"del\">
-				<a data-name=\"".htmlentities($file->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$file->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\">
+				<a data-name=\"".htmlentities($file->getName(), ENT_QUOTES,'ISO-8859-1')."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$file->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\">
 					<img src=\"?img=del\" alt=\"Delete\" />
 				</a>
 			</td>";
+
 		}
 		print "</tr>\n";
 		$row =! $row;
@@ -3247,7 +2559,7 @@ if($this->mobile == false && $this->getConfig("show_load_time") == true)
 	printf($this->getString("page_load_time")." | ", (microtime(TRUE) - $_START_TIME)*1000);
 }
 ?>
-<a href="http://encode-explorer.siineiolekala.net">Encode Explorer</a>
+<a href="http://cna-intra">CNA-INTRA</a>
 </div>
 <!-- END: Info area -->
 </body>

@@ -1,6 +1,5 @@
-Encode Explorer
+Encode Explorer 6.4.1
 ==================================
-
 Encode Explorer is a file browser written in PHP, XHTML and CSS. It displays 
 the list of files in a folder. It was designed to be used in safe mode and so 
 it is kept simple and functional. Free for everyone.
@@ -13,14 +12,22 @@ it is kept simple and functional. Free for everyone.
 * Optional password protection
 * Interface for mobile devices
 
-
 Manual
 ----------------------------------
 You have to upload index.php into your server.
 If you open index.php you can edit several settings.
 You should make sure the edited file will be saved in UTF-8!
 
+Actualizaciones - bajosega@gmail.com
+-------------------------------------
+Basado en la versión original 6.4.1 se han realizado algunas modificaciones
 
+2017-07-10 - Corrijo problemas de acentos en servidor Windows trabajando con iis + php5.6 
+			( todas las carpetas o archivos con acentos o ñ no aparecían correctamente).
+			
+2017-07-10 - Traducción a Español de la vista principal del explorador.
+
+ 
 License
 ----------------------------------
 This software is distributed under The MIT License (MIT).
